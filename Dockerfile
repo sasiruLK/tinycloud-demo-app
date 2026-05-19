@@ -4,7 +4,7 @@ WORKDIR /app
 COPY main.go .
 
 RUN go mod init tinycloud-demo-app
-RUN go build -o server main.go
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -o server main.go
 
 FROM alpine:3.20
 
