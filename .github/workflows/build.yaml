@@ -26,17 +26,19 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Login to GHCR
+      - name: Log in to GHCR
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push ARM64 image
-        run: |
-          IMAGE_TAG=${GITHUB_SHA::7}
-          docker buildx build \
-            --platform linux/arm64 \
-            -t $IMAGE_NAME:$IMAGE_TAG \
-            --push .
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          platforms: linux/arm64
+          tags: |
+            ghcr.io/sasirulk/tinycloud-demo-app:latest
+            ghcr.io/sasirulk/tinycloud-demo-app:${{ github.sha }}
