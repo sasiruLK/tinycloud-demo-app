@@ -13,7 +13,7 @@ func main() {
 	}
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "Hello from TinyCloud GitOps v2 🚀✨")
+		fmt.Fprintln(w, "Hello from TinyCloud GitOps v3 — Argo CD is live! 🚀✨🔥")
 	})
 
 	http.ListenAndServe(":"+port, nil)
