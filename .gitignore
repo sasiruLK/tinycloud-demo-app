@@ -1,0 +1,18 @@
+# Go binary
+/main
+*.exe
+
+# Go build artifacts
+*.o
+*.a
+*.so
+
+# Dependency directories
+vendor/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
